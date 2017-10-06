@@ -1,0 +1,23 @@
+#!/usr/bin/python
+
+def send_email(user, pwd, recipient, subject, body):
+    import smtplib
+
+    gmail_user = user
+    gmail_pwd = pwd
+    FROM = 'no-reply@wahashop.com'
+    TO = recipient if type(recipient) is list else [recipient]
+    SUBJECT = subject
+    TEXT = body
+
+    # Prepare actual message
+    message = """From: %s\nTo: %s\nSubject: %s\n\n%s
+    """ % (FROM, ", ".join(TO), SUBJECT, TEXT)
+    server = smtplib.SMTP("email-smtp.eu-west-1.amazonaws.com", 587)
+    server.ehlo()
+    server.starttls()
+    server.login(gmail_user, gmail_pwd)
+    server.sendmail(FROM, TO, message)
+    server.close()
+
+send_email('AKIAIYYV6OG4XI4XMD2A','AuIqLRkkOM58pKpelxNjOFFRuqWuZeJd1VUnTCTEXbiR','zxf.0810@163.com','test','This is a test')
