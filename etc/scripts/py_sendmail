@@ -23,15 +23,15 @@ for name,value in options:
        MESSAGE = '\n'.join(MESSAGE)
 
 #smtp HOST
-HOST = "email-smtp.eu-west-1.amazonaws.com"               
+HOST = "your.smtp.host"               
 #smtp port
 PORT = "587"                              
 #FROM mail user
-USER = 'AKIAIYYV6OG4XI4XMD2A'                         
+USER = 'user'                         
 #FROM mail password
-PASSWD = 'AuIqLRkkOM58pKpelxNjOFFRuqWuZeJd1VUnTCTEXbiR'                    
+PASSWD = 'password'                    
 #FROM EMAIL
-FROM = "no-reply@wahashop.com"  
+FROM = "no-reply@example.com"  
 
 message = """From: %s\nTo: %s\nSubject: %s\n\n%s
     """ % (FROM, ", ".join(TO), SUBJECT, MESSAGE)
