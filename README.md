@@ -14,9 +14,12 @@ http://localhost:8080/nagios  nagiosadmin/admin
 
 OR
 
-docker run --name nagios4  \
-  -v /home/young/github/nagios-docker/etc/:/opt/nagios/etc/ \
-  -v /home/young/github/nagios-docker/custom_plugins:/opt/Custom-Nagios-Plugins \
+nagios='/home/young/github/nagios-docker'
+docker run -d --name nagios4  \
+  -v ${nagios}/etc/:/opt/nagios/etc/ \
+  -v ${nagios}/var:/opt/nagios/var/ \
+  -v ${nagios}/custom_plugins:/opt/Custom-Nagios-Plugins \
+  -v /etc/localtime:/etc/localtime:ro \
   -p 0.0.0.0:8080:80 jasonrivers/nagios:latest
 
 http://localhost:8080/nagios  nagiosadmin/nagios
